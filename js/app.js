@@ -9,7 +9,7 @@ var Enemy = function(x,y) {
 	this.x = x;
 	this.y = y;
 	
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -36,27 +36,25 @@ Enemy.prototype.update = function(dt) {
 		this.y = 226;
 		} else if (random3 > 0.50 && random3 < 0.67) {
 		this.y = 309;
-		} else if (random3 > 0.67 && random3 < 0.84) {
-		this.y = 392;
 		} else {
-		this.y = 475;
+		this.y = 392;
 		}
 	}
-}	
+};	
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x,y) {
-	this.sprite = 'images/char-boy.png'
+	this.sprite = 'images/char-boy.png';
 	this.x = x;
 	this.y = y;
-}
+};
 
 Player.prototype.render = function() {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -71,11 +69,11 @@ Player.prototype.update = function(dt) {
 		checkCollisionY = Math.abs(this.y - allEnemies[enemyNumber].y);
 		if (checkCollisionX < 50 && checkCollisionY < 50 || this.y < 0) { //
 			this.x = 202;
-			this.y = 652;
+			this.y = 569;
 			//console.log(checkCollisionX,checkCollisionY)
 		}
 	}
-}
+};
 
 Player.prototype.handleInput = function(action){
 	var stepX = 101;
@@ -89,7 +87,7 @@ Player.prototype.handleInput = function(action){
 	} else if (action === "down" && this.y < 652) {
 		this.y = this.y + stepY;
 	}
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -99,9 +97,9 @@ var enemy2 = new Enemy(300,143);
 var enemy3 = new Enemy(150,226);
 var enemy4 = new Enemy(-45,309);
 var enemy5 = new Enemy(-100,392);
-var enemy6 = new Enemy(250,475);
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
-var player = new Player(202,652);
+//var enemy6 = new Enemy(250,475);
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+var player = new Player(202,569);
 
 
 // This listens for key presses and sends the keys to your
